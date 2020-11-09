@@ -14,72 +14,111 @@
       label {
         display: block;
       }
-      label span {
+      span {
         display: inline-block;
         padding: 20px;
         text-align: right;
+      }
+      #list_date {
+        display: inline-block;
       }
     </style>
   </head>
   <body>
     <script>
-      function getday() {
-        var day1;
-        day1 = documemt.write(moment().format('MM월 DD일'));
-        return day1;
-        }
+      var m = moment();
+      var day1 = m.format('MM월 DD일 (ddd)');
+      var day2 = m.add('days',1).format('MM월 DD일 (ddd)');
+      var day3 = m.add("days",1).format('MM월 DD일 (ddd)');
+      var day4 = m.add("days",1).format('MM월 DD일 (ddd)');
+      var day5 = m.add("days",1).format('MM월 DD일 (ddd)');
+      var day6 = m.add("days",1).format('MM월 DD일 (ddd)');
+      var day7 = m.add("days",1).format('MM월 DD일 (ddd)');
     </script>
     <div class="container">
       <div class= "text-center col-12">
         <h1>
           강의실 예약 메일 보내기
         </h1>
-        <form>
-          <label>
-            <span>개인정보 수집 동의</span><input type="radio" name="agree" value="예">예
-          </label>
-          <label>
-            <span>대표자</span><textarea placeholder="이름/학번/전화번호를 기재해주세요"></textarea>
-          </label>
-          <label>
-            <span>참여자</span><textarea placeholder="이름/학번/전화번호를 기재해주세요"></textarea>
-          </label>
-          <label>
-            <span>날짜</span><input type="text" list="date"><br>
-              <datalist id="date">
-                <option value="getday()"></option>
-              </datalist>
-          </label>
-          <label>
-            <span>시간</span><input type="text" list="time"><br>
-              <datalist id="time">
-                <option value="9시~10시"></option>
-                <option value="10시~11시"></option>
-                <option value="11시~12시"></option>
-                <option value="12시~13시"></option>
-                <option value="13시~14시"></option>
-                <option value="14시~15시"></option>
-                <option value="15시~16시"></option>
-                <option value="16시~17시"></option>
-                <option value="17시~18시"></option>
-                <option value="18시~19시"></option>
-                <option value="19시~20시"></option>
-                <option value="20시~21시"></option>
-                <option value="21시~22시"></option>
-              </datalist>
-          </label>    
-        </form>
-        <p>
-          +주의사항<br>
-          1. 승인 메일을 교학팀에 확인받고 강의실을 이용<br>
-          2. 메일 제출 후, 수정 사항이 있거나 취소시, 010 - xxxx- tttttt 로 연락.
-        </p>
-        <hr>
-        <form>
-          <button type="submit" class="btn btn-primary">
-            제출
-          </button>
-        </form>
+      </div>
+      <div class = "row">
+        <div class= "text-center col-12">
+          <form>
+            <label>
+              <span>개인정보 수집 동의</span><input type="checkbox" name="agree" value="예">예
+            </label>
+            <label>
+              <span>대표자</span><textarea placeholder="이름/학번/전화번호를 기재해주세요"></textarea>
+            </label>
+            <label>
+              <span>대표자 이메일</span><input type="email" placeholder="이메일을 기재해주세요">
+            </label>
+            <label>
+              <span>참여자</span><textarea rows="5" placeholder="이름/학번/전화번호를 기재해주세요"></textarea>
+            </label>
+            <label>
+              <span>날짜</span><input type="text" list="date"><br>
+                <datalist id="date">
+                  <option value="day1"></option>
+                  <option value="day2"></option>
+                </datalist>
+            </label>
+            <span id="str_date">날짜</span>
+              <div id="list_date">
+                <label><input type="radio" name="date" id="day1">
+                  <script>
+                    document.write(day1);
+                  </script></label>
+                <label><input type="radio" name="date" id="day2">
+                  <script>
+                    document.write(day2);
+                  </script></label>
+                <label><input type="radio" name="date" id="day3">
+                <script>
+                  document.write(day3);
+                </script></label>
+                <label><input type="radio" name="date" id="day4">
+                <script>
+                  document.write(day4);
+                </script></label>
+                <label><input type="radio" name="date" id="day5">
+                <script>
+                  document.write(day5);
+                </script></label>
+                <label><input type="radio" name="date" id="day6">
+                <script>
+                  document.write(day6);
+                </script></label>
+                <label><input type="radio" name="date" id="day7">
+                <script>
+                  document.write(day7);
+                </script></label>
+              </div><br>
+              <span>시간</span><select name="time">
+                <option value="9시~10시">9시~10시</option>
+                <option value="10시~11시">10시~11시</option>
+                <option value="11시~12시">11시~12시</option>
+                <option value="12시~13시">12시~13시</option>
+                <option value="13시~14시">13시~14시</option>
+                <option value="14시~15시">14시~15시</option>
+                <option value="15시~16시">15시~16시</option>
+                <option value="16시~17시">16시~17시</option>
+                <option value="17시~18시">17시~18시</option>
+                <option value="18시~19시">18시~19시</option>
+                <option value="19시~20시">19시~20시</option>
+                <option value="20시~21시">20시~21시</option>
+                <option value="21시~22시">21시~22시</option>
+              </select>
+            <p>
+              +주의사항<br>
+              1. 승인 메일을 교학팀에 확인받고 강의실을 이용<br>
+              2. 메일 제출 후, 수정 사항이 있거나 취소시, 010 - xxxx- tttttt 로 연락.
+            </p><hr>
+            <button type="submit" class="btn btn-primary">
+              제출
+            </button>
+          </form>
+        </div>
       </div>
     </div> 
   </body>
